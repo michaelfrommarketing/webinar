@@ -16,13 +16,12 @@ Add a **Create Contact** (or **Create/Update Contact**) action and map:
 | Webhook field   | GHL contact field                          |
 |-----------------|--------------------------------------------|
 | `first_name`    | First Name                                 |
+| `last_name`     | Last Name                                  |
 | `email`         | Email                                      |
-| `session`       | Custom field: *Webinar session*            |
-| `city`          | City (or custom field)                     |
-| `business_type` | Custom field: *Business type*              |
+| `phone`         | Phone                                      |
+| `state`         | State                                      |
 | `who_runs_ads`  | Custom field: *Who runs your ads*          |
-| `monthly_spend` | Custom field: *Monthly ad + agency spend*  |
-| `worst_lead`    | Custom field: *Worst lead* (multi-line)    |
+| `monthly_spend` | Custom field: *Monthly spend on paid ads* (Under $4K / $4K - $10K / $10K - $20K / Over $20K) |
 
 Every request also sends `source`, `page_url`, `referrer`, `submitted_at` and any UTM/click IDs from the landing URL (`utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `gclid`, `fbclid`, `li_fat_id`). Map these too if you want attribution.
 
@@ -32,9 +31,9 @@ Create any custom fields you don't have yet under **Settings → Custom Fields**
 
 Suggested steps after the contact action:
 
-- **Add Tag:** `webinar-registered`, plus one tag per session (use an If/Else on `session`: `webinar-2026-12-15` / `webinar-2027-01-12`).
+- **Add Tag:** `webinar-registered`. There's one session: Tuesday 15 December 2026, 10am to 11am AEDT.
 - **Send Email:** the confirmation email. The page promises it includes **the calendar link and the worksheet**.
-- Reminder emails/SMS before each session (Wait until date → Send).
+- Reminder emails/SMS before the session (Wait until date → Send).
 - Optionally add the contact to an opportunity pipeline.
 
 ## Notes

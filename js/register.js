@@ -34,13 +34,12 @@ var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
     var data = new FormData(form);
     var payload = {
       first_name: (data.get("first_name") || "").trim(),
+      last_name: (data.get("last_name") || "").trim(),
       email: (data.get("email") || "").trim(),
-      session: data.get("session") || "",
-      city: data.get("city") || "",
-      business_type: (data.get("business_type") || "").trim(),
+      phone: (data.get("phone") || "").trim(),
+      state: data.get("state") || "",
       who_runs_ads: data.get("who_runs_ads") || "",
       monthly_spend: data.get("monthly_spend") || "",
-      worst_lead: (data.get("worst_lead") || "").trim(),
       source: "Webinar landing page",
       page_url: window.location.href,
       referrer: document.referrer || "",
