@@ -4,7 +4,7 @@
  * Paste the webhook URL from your GHL workflow's "Inbound Webhook" trigger below.
  * See GHL-SETUP.md for the full setup.
  */
-var GHL_WEBHOOK_URL = "PASTE_YOUR_GHL_INBOUND_WEBHOOK_URL_HERE";
+var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/E5IrRJ3JpBr6PkyQNSgi/webhook-trigger/9e61b72a-04d0-4e72-a2a5-c62c8395aba5";
 
 (function () {
   var form = document.getElementById("register-form");
