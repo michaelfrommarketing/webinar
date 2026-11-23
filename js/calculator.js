@@ -118,7 +118,7 @@
       var deals = calls * close;
       set("r-opp", money.format(deals * deal * 12));
       set("r-opp-sub", "That's about " + oneDp.format(deals) + " extra deals a month if your " + oneDp.format(calls) +
-        " calls with bad leads had been with good-fit ones. This estimate isn't included in the total above.");
+        " calls with bad leads had been with good ones. This estimate isn't included in the total above.");
     } else {
       set("r-opp", "Add your deal value");
       set("r-opp-sub", "Fill in section 04 to see what those calls could be worth with buyers on the other end. This estimate isn't included in the total above.");
