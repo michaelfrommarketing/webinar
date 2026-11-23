@@ -6,6 +6,9 @@
  */
 var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/E5IrRJ3JpBr6PkyQNSgi/webhook-trigger/997464f5-f49a-4389-bec8-b452594022da";
 
+// Where people go after a successful registration.
+var CONFIRMATION_URL = "https://webinar.michaelfrommarketing.com.au/webinar-confirmation";
+
 (function () {
   var form = document.getElementById("register-form");
   var wrap = document.getElementById("form-wrap");
@@ -87,21 +90,29 @@ var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/E5IrRJ3JpBr6Pk
       return;
     }
 
+    var redirecting = false;
     setBusy(true);
     send(buildPayload())
       .then(function () {
+        if (window.dataLayer) window.dataLayer.push({ event: "webinar_registration" });
+        if (window.fbq) window.fbq("track", "CompleteRegistration");
+        if (CONFIRMATION_URL) {
+          // Short pause so any tracking pixels can fire before the page changes.
+          redirecting = true;
+          button.textContent = "You're in. Taking you there…";
+          setTimeout(function () { window.location.href = CONFIRMATION_URL; }, 400);
+          return;
+        }
         wrap.hidden = true;
         done.hidden = false;
         done.scrollIntoView({ behavior: "smooth", block: "center" });
-        if (window.dataLayer) window.dataLayer.push({ event: "webinar_registration" });
-        if (window.fbq) window.fbq("track", "CompleteRegistration");
       })
       .catch(function (err) {
         console.error(err);
         showError("Something went wrong saving your spot. Please try again in a moment.");
       })
       .then(function () {
-        setBusy(false);
+        if (!redirecting) setBusy(false);
       });
   });
 })();
