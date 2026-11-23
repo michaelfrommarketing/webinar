@@ -264,6 +264,7 @@ summary::-webkit-details-marker{display:none}
 #calculator .bl-head h2{margin:0;font-size:clamp(36px,5vw,68px);line-height:1;letter-spacing:-0.03em;font-weight:900;max-width:20ch}
 #calculator .bl-head p{margin:0;font-weight:300;font-size:clamp(19px,1.7vw,24px);line-height:1.4;color:rgba(255,255,255,0.8);max-width:52ch}
 #calculator, #calculator *, #calculator *::before, #calculator *::after{box-sizing:border-box}
+@media (max-width: 960px){ .ws-steps{grid-template-columns:minmax(0,1fr) !important} }
 @media (max-width: 480px){ #top .btn{padding-left:18px !important;padding-right:18px !important;white-space:nowrap} }
 #calculator p{margin:0;font-size:18px;line-height:1.45}
 #calculator h2,#calculator h3{margin:0}
@@ -607,8 +608,9 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 <div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
 <span class="eyebrow" style="color: #483F4B">Who's teaching</span>
 <h2 style="margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; font-weight: 900">I'm Michael Laps.</h2>
-<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I started a digital agency at 25 and exited in 2022, when it had a team of 35 across Australia, New Zealand and the UK. I now work as a fractional CMO and run VCMO, a network of CMOs who do the same.</p>
-<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I've been the agency writing the monthly report and the founder reading one. The session uses what I learnt on both sides.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I started a digital agency at 25 and sold it in 2022, when it had a team of 35 and clients like ANZ Bank, Four Seasons Hotels and the RSPCA.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">Now I work with founders and business owners to fix their marketing and scale their business. I also teach at the Australian Marketing Institute.</p>
+<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I've been the agency writing the monthly report and the founder reading one. This session teaches what I learned from both sides of the table.</p>
 <figure style="margin: 8px 0 0; background: #FFFFFF; border: 1px solid #DED5E1; border-left: 2.5px solid #D850F7; border-radius: 2px; padding: 28px 32px; display: flex; flex-direction: column; gap: 14px"><blockquote style="margin: 0; font-weight: 300; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: #1C131F">"We've more than tripled our revenue since we started working with Michael."</blockquote><figcaption style="font-size: 15px; color: #483F4B"><span style="font-weight: 700; color: #1C131F">Catalina Rodriguez</span>, CEO of AMF Magnetics</figcaption></figure>
 </div>
 </div>
@@ -659,12 +661,12 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 <img src="assets/broken_funnel.png" alt="" aria-hidden="true" width="900" height="900" style="width: 100%; max-width: 400px; height: auto; display: block">
 </div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px, 3vw, 40px)">
+<div class="ws-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(24px, 3vw, 40px)">
 <div style="border-top: 2.5px solid #1C131F; padding-top: 22px; display: flex; flex-direction: column; gap: 12px"><span style="font-weight: 900; font-size: clamp(36px, 3.6vw, 48px); letter-spacing: -0.03em; line-height: 1">First</span><p style="margin: 0; font-size: 18px; line-height: 1.45; color: #483F4B">We work out what a good lead is for your business and what one is really costing you today.</p></div>
 <div style="border-top: 2.5px solid #1C131F; padding-top: 22px; display: flex; flex-direction: column; gap: 12px"><span style="font-weight: 900; font-size: clamp(36px, 3.6vw, 48px); letter-spacing: -0.03em; line-height: 1">Then</span><p style="margin: 0; font-size: 18px; line-height: 1.45; color: #483F4B">We find which of three things is sending you the wrong ones: the customer you're targeting, the message in your ads, or the channel you're on.</p></div>
 <div style="border-top: 2.5px solid #1C131F; padding-top: 22px; display: flex; flex-direction: column; gap: 12px"><span style="font-weight: 900; font-size: clamp(36px, 3.6vw, 48px); letter-spacing: -0.03em; line-height: 1">Next</span><p style="margin: 0; font-size: 18px; line-height: 1.45; color: #483F4B">You leave with the one change to make first and a 90-day plan your agency can start on Monday.</p></div>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 64px)">
+<div class="ws-steps" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 64px)">
 <div style="display: flex; flex-direction: column; gap: 16px">
 <h3 style="margin: 0 0 4px; font-weight: 900; font-size: 24px; letter-spacing: -0.02em; line-height: 1.1">You walk out with</h3>
 <div style="display: flex; gap: 14px; align-items: flex-start"><svg aria-hidden="true" viewBox="0 0 25 22" style="width: 22px; height: 18px; flex-shrink: 0; margin-top: 5px"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p style="margin: 0; font-size: 18px; line-height: 1.45">A written definition of a good lead, and what one costs you today.</p></div>
