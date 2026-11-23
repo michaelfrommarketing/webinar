@@ -146,17 +146,21 @@ a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visibl
 .opp .v { font-weight: 900; font-size: 32px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .opp p { font-size: 15px; color: var(--paper-72); }
 
-.results .cta { display: flex; flex-direction: column; gap: 14px; padding-top: 4px; }
-.results .cta p { font-size: 16px; color: var(--paper-90); }
 
-/* How it works */
-.how { padding-bottom: clamp(48px, 7vw, 96px); }
-.how-inner { border-top: 1px solid var(--paper-12); padding-top: clamp(32px, 4vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px clamp(28px, 4vw, 56px); }
-@media (max-width: 860px) { .how-inner { grid-template-columns: minmax(0, 1fr); } }
-.how h2 { font-weight: 900; font-size: clamp(30px, 3.4vw, 44px); letter-spacing: -0.03em; line-height: 1.05; }
-.how ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 14px; }
-.how li { font-size: 17px; line-height: 1.5; color: var(--paper-90); padding-left: 6px; }
-.how li::marker { color: var(--magenta); font-weight: 900; }
+/* Webinar */
+.webinar { padding-bottom: clamp(48px, 7vw, 96px); }
+.webinar-frame { border: 2.5px solid var(--paper); padding: clamp(24px, 4.5vw, 64px); }
+.webinar-main { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.webinar h2 { font-weight: 900; font-size: clamp(34px, 4.2vw, 60px); line-height: 0.95; letter-spacing: -0.03em; max-width: 18ch; }
+.webinar .lede { font-weight: 300; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.35; color: var(--paper-90); max-width: 34ch; }
+.webinar-facts { display: flex; flex-wrap: wrap; gap: 14px clamp(20px, 2.4vw, 36px); padding-top: 20px; border-top: 1px solid rgba(216,80,247,0.4); width: 100%; }
+.webinar-facts div { display: flex; flex-direction: column; gap: 6px; }
+.webinar-facts .eyebrow { color: var(--paper-72); }
+.webinar-facts strong { font-weight: 700; font-size: 18px; }
+@media (max-width: 640px) { .webinar-facts { flex-direction: column; } }
+.webinar-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+.webinar-ctas .btn { padding-left: clamp(22px, 2vw, 30px); padding-right: clamp(22px, 2vw, 30px); }
+
 
 /* Footer */
 footer { border-top: 1px solid var(--paper-12); }
@@ -304,25 +308,28 @@ footer img { height: 56px; width: auto; display: block; }
       <p id="r-opp-sub">Fill in section 04 to see what those calls could be worth with buyers on the other end. This estimate isn't included in the total above.</p>
     </div>
 
-    <div class="cta">
-      <p>In my free webinar I'll show you why your ads attract these leads, and three checks you can run on your own account.</p>
-      <a class="btn btn-primary" href="index.html#register">Save my spot</a>
-    </div>
   </aside>
 </section>
 
-<section class="wrap how" aria-labelledby="how-title">
-  <div class="how-inner">
-    <h2 id="how-title">How the numbers are worked out</h2>
-    <ol>
-      <li>Bad leads are your total leads minus the good-fit ones. Their share of your leads is the share of your ad spend and agency cost they used up.</li>
-      <li>Sales time is the time spent on each bad lead, multiplied by the number of bad leads.</li>
-      <li>Hourly cost is the salary package, including super, divided by a full year of hours (38 hours a week × 52 weeks = 1,976 hours).</li>
-      <li>The yearly figure is the monthly figure × 12. It assumes your numbers stay about the same all year.</li>
-      <li>The revenue estimate assumes each wasted call had been with a good-fit lead at your normal close rate. It's kept out of the total because it depends on you having more good leads to call.</li>
-    </ol>
+<section class="wrap webinar" aria-labelledby="webinar-title">
+  <div class="webinar-frame">
+    <div class="webinar-main">
+      <span class="chip">Free webinar</span>
+      <h2 id="webinar-title">Why your ads are attracting the <span class="accent">wrong</span> leads</h2>
+      <p class="lede">The calculator shows you what bad leads cost. In this live 60-minute session I'll show you why your ads attract them, and how to start fixing it.</p>
+      <div class="webinar-facts">
+        <div><span class="eyebrow">Date</span><strong>Tue, 15 December 2026</strong></div>
+        <div><span class="eyebrow">Time</span><strong>10am to 11am AEDT</strong></div>
+        <div><span class="eyebrow">Price</span><strong>Free</strong></div>
+      </div>
+      <div class="webinar-ctas">
+        <a class="btn btn-primary" href="index.html#register">Save my spot</a>
+        <a class="btn btn-secondary" href="index.html#covered">See what's covered</a>
+      </div>
+    </div>
   </div>
 </section>
+
 </main>
 
 <footer>
