@@ -338,6 +338,11 @@ summary::-webkit-details-marker{display:none}
 #calculator .opp p { font-size: 15px; color: var(--paper-72); }
 #calculator .results-cta { align-self: center; justify-content: center; font-size: clamp(14px, 1.2vw, 18px); padding: 14px clamp(24px, 2.9vw, 43px); }
 #calculator .calc{padding-bottom:0}
+#calculator .headline{text-align:center;align-items:center;gap:18px}
+#calculator .headline .eyebrow{line-height:1.6}
+@media (max-width: 480px){ #calculator #r-month-line{font-size:19px} }
+#calculator .line{grid-template-columns:minmax(0,1fr) auto}
+#calculator .line .sub{grid-column:1}
 
 
 
@@ -499,7 +504,7 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 <li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>You're paying for leads you wouldn't take a call with.</strong> And you take the call anyway, in case this one's real.</p></li>
 <li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>Your agency says leads are up.</strong> Your sales team says they're junk. You're stuck in the middle, paying for both.</p></li>
 <li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>You've thought about firing the agency.</strong> You just can't say for sure the fault is theirs, and starting again with someone new feels worse.</p></li>
-<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>You can't say what a good lead costs you.</strong> You know the ad spend to the dollar. What it actually buys you is a guess.</p></li>
+<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>Your ad spend keeps going up, but your revenue doesn't.</strong> Every month you put more in to get the same handful of real buyers out, and you're running out of ways to justify it.</p></li>
 </ul>
 </div>
 </div>
@@ -557,22 +562,8 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
         </div>
         <div class="field">
           <label for="salary">Average salary of sales team</label>
-          <div class="input-wrap has-pre has-post"><span class="pre">$</span><input id="salary" type="text" inputmode="decimal" placeholder="e.g. $110,000"><span class="post">per year</span></div>
+          <div class="input-wrap has-pre has-post"><span class="pre">$</span><input id="salary" type="text" inputmode="decimal" placeholder="e.g. $100,000"><span class="post">per year</span></div>
           <span class="hint">Total salary package, including superannuation.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="group">
-      <div class="group-head"><span class="num">04</span><h2>The deals you could be winning</h2><span class="opt">Optional</span></div>
-      <div class="fields">
-        <div class="field">
-          <label for="deal">Average deal value</label>
-          <div class="input-wrap has-pre"><span class="pre">$</span><input id="deal" type="text" inputmode="decimal" placeholder="e.g. $15,000"></div>
-        </div>
-        <div class="field">
-          <label for="close">Close rate on good-fit calls</label>
-          <div class="input-wrap has-post"><input id="close" type="text" inputmode="decimal" placeholder="e.g. 20"><span class="post">%</span></div>
         </div>
       </div>
     </div>
@@ -580,25 +571,19 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 
 <aside class="results" id="results" aria-live="polite" aria-label="Your results">
     <div class="headline">
-      <span class="eyebrow">Bad leads cost you each year</span>
+      <span class="eyebrow">What bad leads cost you each year</span>
       <span class="big" id="r-year">$0</span>
-      <span class="per-month" id="r-month-line" hidden>That's <strong id="r-month">$0</strong> every month.</span>
+      <span class="per-month" id="r-month-line" hidden>That's <strong id="r-month">$0</strong> <em>per month</em>.</span>
       <span class="per-month" id="r-empty">Fill in your numbers to see what bad leads cost you.</span>
     </div>
 
     <a class="btn btn-primary results-cta" href="#register">Fix The Problem</a>
-    <div class="stats">
-      <div class="stat"><span class="eyebrow"><em>Reported</em> cost per lead</span><span class="v" id="r-cpl">$0</span></div>
-      <div class="stat"><span class="eyebrow"><em>Actual</em> cost per (good) lead</span><span class="v accent" id="r-cpgl">$0</span></div>
-    </div>
 
-    <div class="opp" id="opp">
-      <span class="eyebrow" style="color: var(--paper-72)">Revenue you could be winning each year</span>
-      <span class="v" id="r-opp">Add your deal value</span>
-      <p id="r-opp-sub">Fill in section 04 to see what those calls could be worth with buyers on the other end. This estimate isn't included in the total above.</p>
+    <div class="lines">
+      <div class="line"><span class="name">Ad spend on bad leads</span><span class="amt" id="r-ads">$0</span><span class="sub" id="r-ads-sub"></span></div>
+      <div class="line"><span class="name">Agency or marketer cost</span><span class="amt" id="r-agency">$0</span><span class="sub" id="r-agency-sub"></span></div>
+      <div class="line"><span class="name">Sales time</span><span class="amt" id="r-time">$0</span><span class="sub" id="r-time-sub"></span></div>
     </div>
-
-    <a class="btn btn-primary results-cta" href="#register">Fix The Problem</a>
   </aside>
 </div>
 <div class="mbar is-hidden" id="mbar">
