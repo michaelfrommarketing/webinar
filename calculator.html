@@ -36,7 +36,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-body { overflow-x: hidden; }
+body { overflow-x: hidden; overflow-x: clip; }
 h1, h2, h3, p { margin: 0; }
 p { font-size: 18px; line-height: 1.45; }
 a { color: var(--paper); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1.5px; }
@@ -52,7 +52,7 @@ a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visibl
   border-radius: 999px; border: 2px solid var(--magenta); color: var(--paper);
   font-size: clamp(14px, 1.2vw, 18px); padding: 14px clamp(24px, 2.9vw, 43px);
   line-height: 1; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
-  text-decoration: none; transition: background 180ms ease;
+  text-decoration: none; text-align: center; transition: background 180ms ease;
 }
 .btn-primary { background: var(--magenta); }
 .btn-primary:hover { background: var(--magenta-hover); border-color: var(--magenta-hover); color: var(--paper); }
@@ -66,12 +66,10 @@ a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visibl
 }
 
 /* Header */
-.site-header { border-bottom: 1px solid var(--paper-12); }
+.site-header { position: sticky; top: 0; z-index: 20; background: var(--hot-black); border-bottom: 1px solid var(--paper-12); }
 .site-header .wrap { padding-top: 18px; padding-bottom: 18px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; min-width: 0; }
 .brand img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; display: block; flex: none; }
-.brand span { font-weight: 700; font-size: 22px; letter-spacing: -0.01em; color: var(--paper); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.brand:hover span { color: var(--paper); }
 
 /* Hero */
 .hero { padding-top: clamp(20px, 3vw, 40px); padding-bottom: clamp(32px, 5vw, 64px); }
@@ -115,7 +113,7 @@ a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visibl
 
 
 /* Results */
-.results { position: sticky; top: 24px; border: 2.5px solid var(--magenta); background: linear-gradient(160deg, rgba(216,80,247,0.14), rgba(216,80,247,0) 55%); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 28px; }
+.results { position: sticky; top: 110px; scroll-margin-top: 100px; border: 2.5px solid var(--magenta); background: linear-gradient(160deg, rgba(216,80,247,0.14), rgba(216,80,247,0) 55%); padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 28px; }
 @media (max-width: 960px) { .results { position: static; } }
 .headline { display: flex; flex-direction: column; gap: 10px; }
 .headline .eyebrow { color: var(--paper-72); }
@@ -180,7 +178,6 @@ footer img { height: 56px; width: auto; display: block; }
 }
 @media (max-width: 560px) {
   .brand img { width: 40px; height: 40px; }
-  .brand span { font-size: 17px; }
   .site-header .btn { font-size: 12px; padding: 12px 18px; }
 }
 </style>
@@ -189,8 +186,8 @@ footer img { height: 56px; width: auto; display: block; }
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/michael_avatar.png" alt="Michael Laps" width="48" height="48"><span>@michaelfrommarketing</span></a>
-    <a class="btn btn-primary" href="index.html#register">Free webinar</a>
+    <a class="brand" href="index.html"><img src="assets/michael_avatar.png" alt="Michael Laps" width="48" height="48"></a>
+    <a class="btn btn-primary" href="index.html#register">Fix the Problem</a>
   </div>
 </header>
 
