@@ -148,19 +148,6 @@ a:focus-visible, input:focus-visible, button:focus-visible, summary:focus-visibl
 .results-cta { width: 100%; }
 
 
-/* Webinar */
-.webinar { padding-bottom: clamp(48px, 7vw, 96px); }
-.webinar-frame { border: 2.5px solid var(--paper); padding: clamp(24px, 4.5vw, 64px); }
-.webinar-main { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
-.webinar h2 { font-weight: 900; font-size: clamp(34px, 4.2vw, 60px); line-height: 0.95; letter-spacing: -0.03em; max-width: 18ch; }
-.webinar .lede { font-weight: 300; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.35; color: var(--paper-90); max-width: 34ch; }
-.webinar-facts { display: flex; flex-wrap: wrap; gap: 14px clamp(20px, 2.4vw, 36px); padding-top: 20px; border-top: 1px solid rgba(216,80,247,0.4); width: 100%; }
-.webinar-facts div { display: flex; flex-direction: column; gap: 6px; }
-.webinar-facts .eyebrow { color: var(--paper-72); }
-.webinar-facts strong { font-weight: 700; font-size: 18px; }
-@media (max-width: 640px) { .webinar-facts { flex-direction: column; } }
-.webinar-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
-.webinar-ctas .btn { padding-left: clamp(22px, 2vw, 30px); padding-right: clamp(22px, 2vw, 30px); }
 
 
 /* Footer */
@@ -292,6 +279,8 @@ footer img { height: 56px; width: auto; display: block; }
 
     <div class="bar" aria-hidden="true"><span class="c-ads" id="b-ads"></span><span class="c-agency" id="b-agency"></span><span class="c-time" id="b-time"></span></div>
 
+    <a class="btn btn-primary results-cta" href="index.html#register">Fix The Problem</a>
+
     <div class="lines">
       <div class="line"><span class="dot c-ads"></span><span class="name">Ad spend on bad leads</span><span class="amt" id="r-ads">$0</span><span class="sub" id="r-ads-sub"></span></div>
       <div class="line"><span class="dot c-agency"></span><span class="name">Agency or marketer cost</span><span class="amt" id="r-agency">$0</span><span class="sub" id="r-agency-sub"></span></div>
@@ -308,28 +297,7 @@ footer img { height: 56px; width: auto; display: block; }
       <span class="v" id="r-opp">Add your deal value</span>
       <p id="r-opp-sub">Fill in section 04 to see what those calls could be worth with buyers on the other end. This estimate isn't included in the total above.</p>
     </div>
-
-    <a class="btn btn-primary results-cta" href="#webinar">Fix The Problem</a>
   </aside>
-</section>
-
-<section class="wrap webinar" id="webinar" aria-labelledby="webinar-title">
-  <div class="webinar-frame">
-    <div class="webinar-main">
-      <span class="chip">Free webinar</span>
-      <h2 id="webinar-title">Why your ads are attracting the <span class="accent">wrong</span> leads</h2>
-      <p class="lede">The calculator shows you what bad leads cost. In this live 60-minute session I'll show you why your ads attract them, and how to start fixing it.</p>
-      <div class="webinar-facts">
-        <div><span class="eyebrow">Date</span><strong>Tue, 15 December 2026</strong></div>
-        <div><span class="eyebrow">Time</span><strong>10am to 11am AEDT</strong></div>
-        <div><span class="eyebrow">Price</span><strong>Free</strong></div>
-      </div>
-      <div class="webinar-ctas">
-        <a class="btn btn-primary" href="index.html#register">Save my spot</a>
-        <a class="btn btn-secondary" href="index.html#covered">See what's covered</a>
-      </div>
-    </div>
-  </div>
 </section>
 
 </main>
