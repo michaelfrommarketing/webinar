@@ -13,6 +13,7 @@
 
   // Reads a field, ignoring the commas added for display; empty or invalid counts as 0.
   function num(id) {
+    if (!$(id)) return 0;
     var v = parseFloat($(id).value.replace(/,/g, ""));
     return isFinite(v) && v > 0 ? v : 0;
   }
@@ -54,7 +55,9 @@
     if (document.activeElement === el) el.setSelectionRange(pos, pos);
   }
   function pct(id) { return Math.min(num(id), 100) / 100; }
-  function set(id, text) { $(id).textContent = text; }
+  function set(id, text) { var el = $(id); if (el) el.textContent = text; }
+  // The embedded version on index.html leaves some of these out.
+  function hide(id, hidden) { var el = $(id); if (el) el.hidden = hidden; }
 
   function calculate() {
     var adSpend = num("ad-spend");
@@ -62,7 +65,7 @@
     var leads = Math.round(num("leads"));
     var goodRaw = Math.round(num("good"));
     var good = Math.min(goodRaw, leads);
-    $("good-warn").hidden = goodRaw <= leads || leads === 0;
+    hide("good-warn", goodRaw <= leads || leads === 0);
 
     var bad = leads - good;
     var badShare = leads > 0 ? bad / leads : 0;
@@ -84,8 +87,8 @@
 
     // Until something is entered, prompt for numbers instead of showing "$0 every month".
     var started = monthly > 0;
-    $("r-month-line").hidden = !started;
-    $("r-empty").hidden = started;
+    hide("r-month-line", !started);
+    hide("r-empty", started);
 
     set("r-year", money.format(yearly));
     set("r-month", money.format(monthly));
@@ -108,7 +111,7 @@
     // Stacked bar widths.
     var parts = { "b-ads": wastedAds, "b-agency": wastedAgency, "b-time": wastedTime };
     Object.keys(parts).forEach(function (id) {
-      $(id).style.width = monthly > 0 ? (parts[id] / monthly * 100) + "%" : "0";
+      if ($(id)) $(id).style.width = monthly > 0 ? (parts[id] / monthly * 100) + "%" : "0";
     });
 
     // Optional: revenue if the wasted calls had been with good-fit leads.
@@ -132,11 +135,17 @@
   form.addEventListener("submit", function (e) { e.preventDefault(); });
   calculate();
 
-  // Mobile: hide the bottom result bar while the full results panel is on screen.
+  // Mobile: show the bottom result bar only while the inputs are on screen and the
+  // full results panel isn't, so it doesn't follow people around the rest of the page.
   var bar = $("mbar");
-  if (bar && "IntersectionObserver" in window) {
+  if (bar && $("results") && "IntersectionObserver" in window) {
+    var formVisible = false, resultsVisible = false;
+    var update = function () { bar.classList.toggle("is-hidden", resultsVisible || !formVisible); };
     new IntersectionObserver(function (entries) {
-      bar.classList.toggle("is-hidden", entries[0].isIntersecting);
+      resultsVisible = entries[0].isIntersecting; update();
     }, { threshold: 0.15 }).observe($("results"));
+    new IntersectionObserver(function (entries) {
+      formVisible = entries[0].isIntersecting; update();
+    }).observe(form);
   }
 })();

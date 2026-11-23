@@ -31,7 +31,7 @@ Create any custom fields you don't have yet under **Settings → Custom Fields**
 
 Suggested steps after the contact action:
 
-- **Add Tag:** `webinar-registered`. There's one session: Tuesday 15 December 2026, 10am to 11am AEDT.
+- **Add Tag:** `webinar-registered`. There's one session: Friday 11 December 2026, 10am to 11am AEDT.
 - **Send Email:** the confirmation email. The page promises it includes **the calendar link and the worksheet**.
 - Reminder emails/SMS before the session (Wait until date → Send).
 - Optionally add the contact to an opportunity pipeline.
