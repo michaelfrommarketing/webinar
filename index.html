@@ -253,6 +253,8 @@ a:hover { text-decoration-color: var(--fg-accent); }
 <style>
 body{margin:0}
 html{scroll-behavior:smooth}
+header{position:sticky;top:0;z-index:20;background:#1C131F}
+section[id],#form-wrap,#form-done{scroll-margin-top:85px}
 a{color:#FFFFFF}a:hover{color:#D850F7}
 a.btn,a.btn:hover{color:#FFFFFF;text-decoration:none}
 summary{cursor:pointer;list-style:none}
@@ -292,7 +294,7 @@ summary::-webkit-details-marker{display:none}
 a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid #D850F7;outline-offset:2px}
 </style>
 </helmet>
-<div style="background: #1C131F; color: #FFFFFF; font-family: 'Mulish', 'Mulish', 'Aeonik', 'Inter', system-ui, sans-serif; overflow-x: hidden" data-canvas-width="1440" data-canvas-height="8000" data-document-role="page" data-label="Home â free webinar">
+<div style="background: #1C131F; color: #FFFFFF; font-family: 'Mulish', 'Mulish', 'Aeonik', 'Inter', system-ui, sans-serif; overflow-x: hidden; overflow-x: clip" data-canvas-width="1440" data-canvas-height="8000" data-document-role="page" data-label="Home â free webinar">
 
 <header style="border-bottom: 1px solid rgba(255,255,255,0.12)">
 <div class="site-header-row" style="max-width: 1280px; margin: 0 auto; padding: 18px clamp(20px, 6vw, 92px); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
