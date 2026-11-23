@@ -439,10 +439,25 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 <section id="video" style="background: #FFFFFF; color: #1C131F">
 <div style="max-width: 1280px; margin: 0 auto; padding: clamp(56px, 8vw, 120px) clamp(20px, 6vw, 92px)">
 <div style="display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3vw, 40px); max-width: 960px; margin: 0 auto">
-<div style="display: flex; flex-direction: column; gap: 24px; max-width: 980px; align-self: stretch">
-<span class="eyebrow" style="color: #483F4B">Who this is for</span>
-<h2 style="margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; font-weight: 900">You're spending real money. You're getting enquiries. And most of them are rubbish.</h2>
-<p style="margin: 0; font-weight: 300; font-size: clamp(20px, 1.9vw, 26px); line-height: 1.35; color: #483F4B; max-width: 46ch">This is for founders of B2B and service-based businesses who pay for ads and are fed up with what comes back.</p>
+<div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; max-width: 980px; align-self: stretch">
+<h2 style="margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; font-weight: 900; text-align: left; align-self: stretch">This is for founders of B2B and service-based businesses who pay for ads and are fed up with what comes back.</h2>
+</div>
+<div class="fy">
+<style>
+.fy{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:16px;padding:4px 0 8px}
+.fy .eyebrow{color:#483F4B}
+.fy ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:12px 40px;justify-content:center;text-align:left}
+.fy li{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:clamp(16px,1.4vw,18px);line-height:1.35;color:#1C131F}
+.fy svg{width:18px;height:15px;flex-shrink:0;margin-top:4px}
+@media (max-width:600px){.fy{align-items:flex-start}.fy ul{grid-template-columns:minmax(0,1fr);gap:10px}}
+</style>
+<span class="eyebrow">Sound familiar?</span>
+<ul>
+<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><span>You're paying for leads who don't buy.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><span>Your agency's reports look better than your pipeline.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><span>Marketing spend is going up, but revenue isn't.</span></li>
+<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><span>Your calendar is full of sales calls that go nowhere.</span></li>
+</ul>
 </div>
 <!-- VIDEO: replace the placeholder div below with your embed code, e.g.
      <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Why your ads attract the wrong leads" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0"></iframe>
@@ -480,7 +495,7 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 .rs-join li{display:flex;gap:14px;align-items:flex-start;padding:20px 0;border-top:1px solid #DED5E1}
 .rs-join li:nth-child(-n+2){border-top:2.5px solid #1C131F}
 .rs-join li p{margin:0;font-size:18px;line-height:1.45;color:#483F4B}
-.rs-join li strong{display:block;font-weight:900;font-size:clamp(19px,1.6vw,22px);line-height:1.2;letter-spacing:-0.01em;color:#1C131F;margin-bottom:6px}
+.rs-join li strong{display:block;font-weight:900;font-size:clamp(19px,1.6vw,22px);line-height:1.2;letter-spacing:-0.01em;color:#1C131F;margin-bottom:0}
 .rs-join svg{width:22px;height:18px;flex-shrink:0;margin-top:3px}
 @media (max-width:960px){.rs-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.rs-card,.rs-card:nth-child(4){grid-column:span 1}.rs-card:nth-child(5){grid-column:1/-1}}
 @media (max-width:600px){.rs-grid{grid-template-columns:minmax(0,1fr)}.rs-card:nth-child(n){grid-column:auto}.rs-join ul{grid-template-columns:minmax(0,1fr)}.rs-join li:nth-child(2){border-top:1px solid #DED5E1}.rs-card{display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:8px;padding:20px 20px 22px}.rs-num{font-size:40px;grid-row:span 2}.rs-grid{gap:12px}}
@@ -497,15 +512,6 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 <div class="rs-card"><span class="rs-num">3</span><h3>Wrong channel</h3><p>How to tell whether the channel fits the way your customer buys.</p></div>
 <div class="rs-card"><span class="rs-num">4</span><h3>Wrong creative</h3><p>Whether your ad looks credible enough to stop the right buyer. You'll see a weak ad next to a strong one.</p></div>
 <div class="rs-card"><span class="rs-num">5</span><h3>Wrong landing page</h3><p>Whether the page behind your ad backs it up, or loses the right buyer once they click. You'll see a weak page next to a strong one.</p></div>
-</div>
-<div class="rs-join">
-<h3>This webinar is for you if:</h3>
-<ul>
-<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>You're paying for leads you wouldn't take a call with.</strong> And you take the call anyway, in case this one's real.</p></li>
-<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>Your agency says leads are up.</strong> Your sales team says they're junk. You're stuck in the middle, paying for both.</p></li>
-<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>You've thought about firing the agency.</strong> You just can't say for sure the fault is theirs, and starting again with someone new feels worse.</p></li>
-<li><svg aria-hidden="true" viewBox="0 0 25 22"><path d="M 25 0 L 12.5 22 L 10 9 L 0 0 Z" fill="#D850F7"></path></svg><p><strong>Your ad spend keeps going up, but your revenue doesn't.</strong> Every month you put more in to get the same handful of real buyers out, and you're running out of ways to justify it.</p></li>
-</ul>
 </div>
 </div>
 </section>
