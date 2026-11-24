@@ -73,6 +73,46 @@ var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmat
     return payload;
   }
 
+  // Meta Conversions API needs customer details normalised and SHA-256 hashed.
+  // GHL can't hash, so we do it here and GHL passes the hashes straight to Meta.
+  function sha256(value) {
+    if (!value || !window.crypto || !crypto.subtle) return Promise.resolve("");
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ("0" + b.toString(16)).slice(-2);
+      }).join("");
+    });
+  }
+
+  function normPhone(raw) {
+    var d = (raw || "").replace(/\D/g, "");
+    if (!d) return "";
+    if (d.indexOf("61") === 0) return d;
+    if (d.charAt(0) === "0") return "61" + d.slice(1);
+    return "61" + d;
+  }
+
+  function normText(raw) {
+    return (raw || "").toLowerCase().replace(/[^a-z]/g, "");
+  }
+
+  function addMetaHashes(payload) {
+    var fields = {
+      meta_em: (payload.email || "").toLowerCase().trim(),
+      meta_ph: normPhone(payload.phone),
+      meta_fn: normText(payload.first_name),
+      meta_ln: normText(payload.last_name),
+      meta_st: normText(payload.state),
+      meta_country: "au"
+    };
+    var keys = Object.keys(fields);
+    return Promise.all(keys.map(function (k) { return sha256(fields[k]); })).then(function (hashes) {
+      keys.forEach(function (k, i) { payload[k] = hashes[i]; });
+      payload.event_time = Math.floor(Date.now() / 1000);
+      return payload;
+    }, function () { return payload; });
+  }
+
   function send(payload) {
     // First try a normal JSON POST. If the browser blocks it (CORS), fall back to a
     // form-encoded "no-cors" POST, which always reaches the webhook but can't be read back.
@@ -111,7 +151,8 @@ var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmat
 
     var redirecting = false;
     setBusy(true);
-    send(buildPayload())
+    addMetaHashes(buildPayload())
+      .then(send)
       .then(function () {
         if (window.dataLayer) window.dataLayer.push({ event: "webinar_registration" });
         if (window.fbq) window.fbq("track", "CompleteRegistration", {}, { eventID: EVENT_ID });
