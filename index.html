@@ -611,7 +611,7 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 .who-bio{display:flex;flex-direction:column;gap:22px}
 @media (min-width:900px){
 .who-grid{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1fr);column-gap:clamp(32px,5vw,72px);row-gap:30px;align-items:start}
-.who-photo{grid-column:1;grid-row:1;align-self:stretch;position:relative;max-width:none}
+.who-photo{grid-column:1;grid-row:1 / span 2;align-self:stretch;position:relative;max-width:none}
 .who-photo img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:55% 25%}
 .who-bio{grid-column:2;grid-row:1}
 .who-grid figure{grid-column:2;grid-row:2}
