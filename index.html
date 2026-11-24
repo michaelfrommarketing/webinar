@@ -604,18 +604,31 @@ a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,t
 </section>
 
 <section id="who" style="background: #FBF4FD; color: #1C131F">
-<div style="max-width: 1280px; margin: 0 auto; padding: clamp(56px, 8vw, 120px) clamp(20px, 6vw, 92px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(32px, 5vw, 72px)">
-<div style="flex: 1 1 300px; min-width: 0; max-width: 460px">
-<img src="assets/michael_couch.avif" alt="Michael Laps" width="1000" height="1048" style="width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% center; display: block">
+<style>
+.who-grid{max-width:1280px;margin:0 auto;padding:clamp(56px,8vw,120px) clamp(20px,6vw,92px);display:flex;flex-direction:column;gap:clamp(32px,5vw,72px)}
+.who-photo{max-width:460px}
+.who-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:55% center;display:block}
+.who-bio{display:flex;flex-direction:column;gap:22px}
+@media (min-width:900px){
+.who-grid{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1fr);column-gap:clamp(32px,5vw,72px);row-gap:30px;align-items:start}
+.who-photo{grid-column:1;grid-row:1;align-self:stretch;position:relative;max-width:none}
+.who-photo img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:55% 25%}
+.who-bio{grid-column:2;grid-row:1}
+.who-grid figure{grid-column:2;grid-row:2}
+}
+</style>
+<div class="who-grid">
+<div class="who-photo">
+<img src="assets/michael_couch.avif" alt="Michael Laps" width="1000" height="1048">
 </div>
-<div style="flex: 999 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div class="who-bio">
 <span class="eyebrow" style="color: #483F4B">Who's teaching</span>
 <h2 style="margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; letter-spacing: -0.03em; font-weight: 900">I'm Michael Laps.</h2>
 <p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I started a digital agency at 25 and sold it in 2022, when it had a team of 35 and clients like ANZ Bank, Four Seasons Hotels and the RSPCA.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">Now I work with founders and business owners to fix their marketing and scale their business. I also teach at the Australian Marketing Institute.</p>
 <p style="margin: 0; font-size: 19px; line-height: 1.5; color: #483F4B; max-width: 56ch">I've been the agency writing the monthly report and the founder reading one. This session teaches what I learned from both sides of the table.</p>
-<figure style="margin: 8px 0 0; background: #FFFFFF; border: 1px solid #DED5E1; border-left: 2.5px solid #D850F7; border-radius: 2px; padding: 28px 32px; display: flex; flex-direction: column; gap: 14px"><blockquote style="margin: 0; font-weight: 300; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: #1C131F">"We've more than tripled our revenue since we started working with Michael."</blockquote><figcaption style="font-size: 15px; color: #483F4B"><span style="font-weight: 700; color: #1C131F">Catalina Rodriguez</span>, CEO of AMF Magnetics</figcaption></figure>
 </div>
+<figure style="margin: 0; font-size: 19px; max-width: 56ch; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DED5E1; border-left: 2.5px solid #D850F7; border-radius: 2px; padding: 28px 32px; display: flex; flex-direction: column; gap: 14px"><blockquote style="margin: 0; font-weight: 300; font-size: clamp(21px, 1.9vw, 26px); line-height: 1.3; letter-spacing: -0.01em; color: #1C131F">"We've more than tripled our revenue since we started working with Michael."</blockquote><figcaption style="font-size: 15px; color: #483F4B"><span style="font-weight: 700; color: #1C131F">Catalina Rodriguez</span>, CEO of AMF Magnetics</figcaption></figure>
 </div>
 </section>
 
