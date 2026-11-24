@@ -33,6 +33,21 @@ var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmat
     button.style.cursor = busy ? "progress" : "";
   }
 
+  // Meta: one ID shared by the browser pixel and the GHL Conversions API event, so Meta counts the registration once.
+  var EVENT_ID = "reg-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+
+  function readCookie(name) {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + name + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+
+  function metaClickId() {
+    var fbc = readCookie("_fbc");
+    if (fbc) return fbc;
+    var fbclid = params.get("fbclid");
+    return fbclid ? "fb.1." + Date.now() + "." + fbclid : "";
+  }
+
   function buildPayload() {
     var data = new FormData(form);
     var payload = {
@@ -46,6 +61,10 @@ var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmat
       source: "Webinar landing page",
       page_url: window.location.href,
       referrer: document.referrer || "",
+      event_id: EVENT_ID,
+      fbp: readCookie("_fbp"),
+      fbc: metaClickId(),
+      user_agent: navigator.userAgent,
       submitted_at: new Date().toISOString()
     };
     TRACKING_KEYS.forEach(function (key) {
@@ -95,7 +114,7 @@ var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmat
     send(buildPayload())
       .then(function () {
         if (window.dataLayer) window.dataLayer.push({ event: "webinar_registration" });
-        if (window.fbq) window.fbq("track", "CompleteRegistration");
+        if (window.fbq) window.fbq("track", "CompleteRegistration", {}, { eventID: EVENT_ID });
         if (CONFIRMATION_URL) {
           // Short pause so any tracking pixels can fire before the page changes.
           redirecting = true;
