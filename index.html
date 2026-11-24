@@ -40,7 +40,7 @@ a { color: inherit; }
 .body-l { font-size: 18px; line-height: 27px; }
 .body { font-size: 16px; line-height: 24px; }
 .small { font-size: 14px; line-height: 20px; }
-.label { font-weight: 900; font-size: 16px; line-height: 20px; letter-spacing: 0.03em; text-transform: uppercase; }
+.label { font-weight: 700; font-size: 15px; line-height: 1.3; }
 .magenta { color: var(--magenta); }
 .wrap { max-width: 1440px; margin: 0 auto; padding: var(--pad-y) var(--pad-x); }
 
@@ -121,8 +121,7 @@ a { color: inherit; }
 .input input::placeholder { color: var(--placeholder); opacity: 1; }
 .field .hint { color: var(--paper); }
 .field .warn { color: var(--magenta); }
-.calc-inputs .field { gap: 8px; }
-.calc-inputs .field .label { font-weight: 700; font-size: 15px; line-height: 1.3; letter-spacing: 0; text-transform: none; }
+.calc-inputs .field, #register-form .field { gap: 8px; }
 .calc-inputs .field .hint, .calc-inputs .field .warn { font-size: 14px; line-height: 1.4; }
 .calc-inputs .field .hint { color: rgba(255, 255, 255, 0.72); }
 .results { position: sticky; top: 116px; flex: 1 1 0; min-width: 0; box-shadow: inset 0 0 0 1.5px var(--paper); padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
@@ -166,15 +165,11 @@ a { color: inherit; }
 .form-group .head { display: flex; flex-direction: column; gap: 6px; }
 .name-row { display: flex; gap: 16px; }
 .name-row > .field { flex: 1 1 0; min-width: 0; }
-.choice { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
-.choice legend { padding: 0; margin-bottom: 10px; color: var(--paper); }
-.pills { display: flex; flex-wrap: wrap; gap: 8px; }
-.pill { position: relative; }
-.pill input { position: absolute; left: 50%; bottom: 0; width: 1px; height: 1px; opacity: 0; margin: 0; }
-.pill span { display: block; padding: 13px 19px; border: 1px solid var(--field-line); border-radius: 999px; background: var(--field); color: var(--paper); cursor: pointer; white-space: nowrap; transition: border-color .15s, background-color .15s; }
-.pill:hover span { border-color: #6a636f; }
-.pill input:checked + span { border-color: var(--magenta); }
-.pill input:focus-visible + span { outline: 2px solid var(--magenta); outline-offset: 2px; }
+.select { position: relative; padding: 0; }
+.select select { appearance: none; -webkit-appearance: none; width: 100%; min-height: 54px; margin: 0; padding: 15px 48px 15px 20px; border: 0; outline: 0; background: transparent; color: var(--paper); font: 400 16px/24px "Mulish", system-ui, sans-serif; cursor: pointer; }
+.select select:invalid { color: var(--placeholder); }
+.select select option { color: var(--hot-black); background: var(--paper); }
+.select::after { content: ""; position: absolute; right: 20px; top: 50%; width: 8px; height: 8px; margin-top: -6px; border-right: 2px solid var(--paper); border-bottom: 2px solid var(--paper); transform: rotate(45deg); pointer-events: none; }
 .terms { text-align: center; }
 .terms a { text-decoration: underline; text-underline-offset: 2px; }
 #form-error { border-left: 3px solid var(--magenta); padding: 4px 0 4px 14px; }
@@ -235,7 +230,11 @@ a { color: inherit; }
   .learn-grid { grid-template-columns: minmax(0, 1fr); row-gap: 40px; }
   .fact { white-space: normal; }
   .site-footer .row { flex-direction: column; align-items: flex-start; }
-  .footer-links { gap: 16px 24px; }
+  .footer-links { display: grid; grid-template-columns: repeat(2, max-content); gap: 16px 40px; }
+  .footer-links a:nth-child(1) { grid-column: 2; grid-row: 1; }
+  .footer-links a:nth-child(2) { grid-column: 1; grid-row: 2; }
+  .footer-links a:nth-child(3) { grid-column: 2; grid-row: 2; }
+  .footer-links a:nth-child(4) { grid-column: 1; grid-row: 1; }
   .mbar { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 12px 12px 18px; background: var(--field); border: 1px solid var(--field-line); border-radius: 999px; color: var(--paper); transition: transform .2s, opacity .2s; }
   .mbar.is-hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
   .mbar .v { display: block; font-weight: 900; font-size: 18px; line-height: 22px; }
@@ -448,7 +447,6 @@ fbq('track', 'PageView');
           <span class="fact"><img src="assets/r/clock.svg" alt="">10 to 11am AEDT</span>
           <span class="fact"><img src="assets/r/live.svg" alt="">Free, live, 60 minutes</span>
         </div>
-        <p class="body confirm">Your confirmation email has the calendar link and the worksheet.</p>
         <figure class="testimonial">
           <span class="mark" aria-hidden="true">&ldquo;</span>
           <blockquote class="body-l">We've more than tripled our revenue since we started working with Michael.</blockquote>
@@ -473,9 +471,9 @@ fbq('track', 'PageView');
                 </div>
               </div>
               <div class="field">
-                <label class="label" for="f-email">Work email</label>
-                <div class="input"><input id="f-email" name="email" type="email" autocomplete="email" placeholder="Enter your work email" required></div>
-                <span class="hint small">We'll send your calendar link and worksheet here.</span>
+                <label class="label" for="f-email">Email</label>
+                <div class="input"><input id="f-email" name="email" type="email" autocomplete="email" placeholder="Enter your email" required></div>
+                <span class="hint small">We'll send your calendar link here.</span>
               </div>
               <div class="field">
                 <label class="label" for="f-phone">Mobile</label>
@@ -486,38 +484,20 @@ fbq('track', 'PageView');
             <div class="form-group">
               <div class="head">
                 <h3 class="h3">About your ads</h3>
-                <p class="small">Three quick taps. Your answers shape the examples I use on the day.</p>
+                <p class="small">Your answers shape the examples I use.</p>
               </div>
-              <fieldset class="choice">
-                <legend class="label">Your state</legend>
-                <div class="pills">
-                  <label class="pill"><input type="radio" name="state" value="Australian Capital Territory" required><span>ACT</span></label>
-                  <label class="pill"><input type="radio" name="state" value="New South Wales"><span>NSW</span></label>
-                  <label class="pill"><input type="radio" name="state" value="Northern Territory"><span>NT</span></label>
-                  <label class="pill"><input type="radio" name="state" value="Queensland"><span>QLD</span></label>
-                  <label class="pill"><input type="radio" name="state" value="South Australia"><span>SA</span></label>
-                  <label class="pill"><input type="radio" name="state" value="Tasmania"><span>TAS</span></label>
-                  <label class="pill"><input type="radio" name="state" value="Victoria"><span>VIC</span></label>
-                  <label class="pill"><input type="radio" name="state" value="Western Australia"><span>WA</span></label>
-                </div>
-              </fieldset>
-              <fieldset class="choice">
-                <legend class="label">Who runs your ads?</legend>
-                <div class="pills">
-                  <label class="pill"><input type="radio" name="who_runs_ads" value="I do" required><span>I do</span></label>
-                  <label class="pill"><input type="radio" name="who_runs_ads" value="An agency"><span>An agency</span></label>
-                  <label class="pill"><input type="radio" name="who_runs_ads" value="Someone in-house"><span>Someone in-house</span></label>
-                </div>
-              </fieldset>
-              <fieldset class="choice">
-                <legend class="label">Monthly spend on paid ads</legend>
-                <div class="pills">
-                  <label class="pill"><input type="radio" name="monthly_spend" value="Under $4K" required><span>Under $4K</span></label>
-                  <label class="pill"><input type="radio" name="monthly_spend" value="$4K - $10K"><span>$4K to $10K</span></label>
-                  <label class="pill"><input type="radio" name="monthly_spend" value="$10K - $20K"><span>$10K to $20K</span></label>
-                  <label class="pill"><input type="radio" name="monthly_spend" value="Over $20K"><span>Over $20K</span></label>
-                </div>
-              </fieldset>
+              <div class="field">
+                <label class="label" for="f-state">Your state</label>
+                <div class="input select"><select id="f-state" name="state" required><option value="" disabled selected>Select your state</option><option>Australian Capital Territory</option><option>New South Wales</option><option>Northern Territory</option><option>Queensland</option><option>South Australia</option><option>Tasmania</option><option>Victoria</option><option>Western Australia</option></select></div>
+              </div>
+              <div class="field">
+                <label class="label" for="f-runs">Who runs your ads?</label>
+                <div class="input select"><select id="f-runs" name="who_runs_ads" required><option value="" disabled selected>Select</option><option>I do</option><option>An agency</option><option>Someone in-house</option></select></div>
+              </div>
+              <div class="field">
+                <label class="label" for="f-spend">Monthly spend on paid ads</label>
+                <div class="input select"><select id="f-spend" name="monthly_spend" required><option value="" disabled selected>Select a range</option><option>Under $4K</option><option>$4K - $10K</option><option>$10K - $20K</option><option>Over $20K</option></select></div>
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Save My Free Spot</button>
@@ -527,7 +507,7 @@ fbq('track', 'PageView');
         </div>
         <div id="form-done" class="form-done" role="status" hidden>
           <h3 class="h3">You're in.</h3>
-          <p class="body">Your confirmation email has the calendar link and the worksheet.</p>
+          <p class="body">Your confirmation email has the calendar link.</p>
         </div>
       </div>
     </div>
