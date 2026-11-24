@@ -63,7 +63,7 @@ a { color: inherit; }
 /* Header */
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--hot-black); }
 .site-header .row { max-width: 1440px; margin: 0 auto; padding: 20px var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 92px; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--paper); text-decoration: none; font-weight: 900; font-size: 16px; line-height: 22px; }
+.brand { display: flex; align-items: center; gap: 12px; white-space: nowrap; flex-shrink: 0; color: var(--paper); text-decoration: none; font-weight: 900; font-size: 16px; line-height: 22px; }
 .brand img { width: 40px; height: 40px; border-radius: 50%; }
 .site-nav { display: flex; align-items: center; gap: 32px; }
 .site-nav a:not(.btn) { color: var(--paper); text-decoration: none; white-space: nowrap; }
@@ -198,6 +198,13 @@ a { color: inherit; }
   .summary { width: 100%; max-width: 640px; flex: none; }
   .form-col { width: 100%; }
 }
+@media (min-width: 861px) and (max-width: 1100px) {
+  .site-nav { gap: 18px; }
+  .site-nav .btn { padding-left: 22px; padding-right: 22px; }
+}
+@media (min-width: 861px) and (max-width: 980px) {
+  .brand .name { display: none; }
+}
 @media (max-width: 860px) {
   .nav-toggle { display: inline-flex; }
   .site-nav { position: absolute; top: 100%; left: 0; right: 0; background: var(--hot-black); border-top: 1px solid var(--field-line); border-bottom: 1px solid var(--field-line); flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad-x) 24px; display: none; }
@@ -240,9 +247,10 @@ fbq('track', 'PageView');
 
 <header class="site-header">
   <div class="row">
-    <a class="brand" href="#top"><img src="assets/r/avatar.png" alt="" width="40" height="40">Michael Laps</a>
+    <a class="brand" href="#top"><img src="assets/r/avatar.png" alt="" width="40" height="40"><span class="name">Michael Laps</span></a>
     <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
     <nav class="site-nav" id="site-nav" aria-label="Main">
+      <a href="#calculator">Bad Lead Calculator</a>
       <a href="#covered">What You'll Learn</a>
       <a href="#who">About Michael</a>
       <a class="btn btn-primary" href="#register">Save My Free Spot</a>
