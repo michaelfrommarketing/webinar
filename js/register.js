@@ -7,7 +7,7 @@
 var GHL_WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/E5IrRJ3JpBr6PkyQNSgi/webhook-trigger/997464f5-f49a-4389-bec8-b452594022da";
 
 // Where people go after a successful registration.
-var CONFIRMATION_URL = "https://webinar.michaelfrommarketing.com.au/webinar-confirmation";
+var CONFIRMATION_URL = "https://lp.michaelfrommarketing.com.au/webinar-confirmation";
 
 (function () {
   var form = document.getElementById("register-form");
