@@ -193,6 +193,26 @@ a { color: inherit; }
 .form-done { display: flex; flex-direction: column; gap: 16px; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
+/* Terms and privacy pop-up */
+.legal { width: min(760px, calc(100vw - 32px)); max-height: min(86vh, 900px); padding: 0; border: 0; border-radius: 12px; background: var(--paper); color: var(--hot-black); box-shadow: 0 24px 80px rgba(0,0,0,0.45); }
+.legal[open] { display: flex; flex-direction: column; }
+.legal::backdrop { background: rgba(28, 19, 31, 0.72); }
+.legal-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 28px 0; }
+.legal-close { width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--mid-grey); background: transparent; color: var(--hot-black); font-size: 24px; line-height: 1; cursor: pointer; flex-shrink: 0; }
+.legal-close:hover { background: var(--light-grey); }
+.legal-tabs { display: flex; gap: 24px; padding: 16px 28px 0; border-bottom: 1px solid var(--mid-grey); }
+.legal-tabs button { background: none; border: 0; padding: 10px 0 12px; margin-bottom: -1px; font: 700 15px/20px "Mulish", system-ui, sans-serif; color: var(--dark-grey); cursor: pointer; border-bottom: 2px solid transparent; }
+.legal-tabs button[aria-selected="true"] { color: var(--hot-black); border-bottom-color: var(--magenta); }
+.legal-body { overflow-y: auto; padding: 8px 28px 32px; font-size: 15px; line-height: 1.6; color: var(--dark-grey); }
+.legal-body h3 { margin: 24px 0 8px; font-weight: 900; font-size: 17px; line-height: 1.3; color: var(--hot-black); }
+.legal-body h4 { margin: 16px 0 6px; font-weight: 700; font-size: 15px; color: var(--hot-black); }
+.legal-body p { margin: 0 0 10px; }
+.legal-body ul { margin: 0 0 10px; padding-left: 20px; }
+.legal-body li { margin-bottom: 4px; }
+.legal-body .updated { margin-top: 16px; font-size: 13px; color: var(--dark-grey); }
+.legal-body a { color: var(--hot-black); }
+@media (max-width: 600px) { .legal { width: 100vw; max-width: 100vw; max-height: 92vh; margin: auto 0 0; border-radius: 12px 12px 0 0; } .legal-head, .legal-tabs { padding-left: 20px; padding-right: 20px; } .legal-body { padding: 4px 20px 28px; } }
+
 /* ---------- Smaller screens ---------- */
 @media (max-width: 1280px) {
   .calc { gap: 48px; }
@@ -511,7 +531,7 @@ fbq('track', 'PageView');
 
             <button type="submit" class="btn btn-primary btn-block">Save My Free Spot</button>
             <p id="form-error" class="small" role="alert" hidden></p>
-            <p class="terms small">By registering, you agree to the <a href="#">terms and privacy policy</a>.</p>
+            <p class="terms small">By registering, you agree to the <a href="#legal" data-legal="terms">terms</a> and <a href="#legal" data-legal="privacy">privacy policy</a>.</p>
           </form>
         </div>
         <div id="form-done" class="form-done" role="status" hidden>
@@ -524,6 +544,112 @@ fbq('track', 'PageView');
 </section>
 
 </main>
+
+<dialog class="legal" id="legal" aria-labelledby="legal-title">
+  <div class="legal-head">
+    <h2 class="h3" id="legal-title">Terms and privacy</h2>
+    <button type="button" class="legal-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="legal-tabs" role="tablist">
+    <button type="button" role="tab" id="tab-terms" aria-controls="legal-terms" aria-selected="true">Terms of Service</button>
+    <button type="button" role="tab" id="tab-privacy" aria-controls="legal-privacy" aria-selected="false">Privacy Policy</button>
+  </div>
+  <div class="legal-body">
+    <section id="legal-terms" role="tabpanel" aria-labelledby="tab-terms">
+      <p class="updated">Last updated: 25 November 2026</p>
+      <p>These Terms and Conditions ("Terms") apply to your use of the websites operated by VCMO (Laps Ventures Pty Ltd as trustee for the Laps Ventures Trust, ABN 13 464 430 237) ("VCMO", "we", "us" or "our"), including vcmo.com.au and michaelfrommarketing.com.au, and to the webinars, content and services we provide through them.</p>
+      <p>By accessing or using our websites or services, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, please do not use our websites or services.</p>
+      <h3>1. Eligibility</h3>
+      <p>By using our websites and services, you confirm that you:</p>
+      <ul><li>are 18 or older and legally able to enter into a binding agreement</li><li>have the authority to enter into these Terms, including on behalf of any business you represent</li><li>will comply with these Terms, our Privacy Policy and any other guidelines we refer to</li></ul>
+      <h3>2. Our services</h3>
+      <p>VCMO provides strategic marketing leadership services, including virtual and fractional CMO support, marketing projects, training, webinars and workshops.</p>
+      <p>Specific paid services may be covered by a separate proposal or agreement. If that agreement conflicts with these Terms, the separate agreement applies.</p>
+      <h3>3. Registrations and accounts</h3>
+      <p>When you register for a webinar or event, or create an account, you must give us accurate, complete and current information. You are responsible for keeping any password secure and for all activity under your account.</p>
+      <p>We may refuse a registration, or suspend or close an account, if the information you give us is false or incomplete, or if you breach these Terms.</p>
+      <h3>4. Acceptable use</h3>
+      <p>You must use our websites and services lawfully and responsibly. You must not:</p>
+      <ul><li>post or send content that is false, misleading, defamatory, offensive or indecent</li><li>collect personal information about other users</li><li>upload or transmit viruses, worms or any other harmful code</li><li>interfere with the operation or security of our websites</li><li>reproduce, copy, sell, resell or commercially exploit any part of our websites or services without our written permission</li></ul>
+      <h3>5. Intellectual property</h3>
+      <p>All content on our websites and in our webinars, workshops and materials, including text, graphics, logos, videos, worksheets and software, is owned by VCMO or its licensors and is protected by copyright, trade mark and other intellectual property laws.</p>
+      <p>You may view and share information from our websites for your own personal, non-commercial use. You must not remove any copyright or other notices. Any other use, including modifying, adapting, translating, creating derivative works from, decompiling or reverse engineering any part of our websites or materials, needs our express written permission. Nothing in these Terms gives you any ownership of our intellectual property.</p>
+      <h3>6. Confidentiality</h3>
+      <p>You agree not to disclose or commercially use confidential information you receive from us, or from other participants, in the course of our webinars, workshops or services.</p>
+      <h3>7. No guarantee of results</h3>
+      <p>Our webinars, workshops and content are general in nature and are provided for educational purposes. They are not tailored advice for your business. Results depend on many factors outside our control, including how you implement what you learn, so we do not guarantee any particular outcome.</p>
+      <h3>8. Disclaimers and limitation of liability</h3>
+      <p>Nothing in these Terms excludes, restricts or modifies any right or remedy you have under the Australian Consumer Law that cannot lawfully be excluded.</p>
+      <p>Subject to that:</p>
+      <ul><li>our websites, content and services are provided "as is", without warranties of any kind, whether express or implied</li><li>we do not promise that our websites will be uninterrupted or error-free, and we may change, suspend or discontinue any part of them at any time</li><li>you use our websites and content at your own risk, and we are not responsible for how you interpret or act on them</li><li>VCMO is not liable for any direct, indirect, incidental or consequential loss or damage arising from your use of our websites or services</li><li>where our liability cannot be excluded but can be limited, it is limited to supplying the services again or paying the cost of having them supplied again</li></ul>
+      <h3>9. Third-party websites</h3>
+      <p>Our websites may link to websites run by others. We are not responsible for their content, accuracy or practices, and using them is at your own risk.</p>
+      <h3>10. Termination</h3>
+      <p>We may suspend or end your access to our websites or services at any time, for any reason, including a breach of these Terms, without notice and without liability to you.</p>
+      <h3>11. Assignment</h3>
+      <p>You may not assign or transfer your rights under these Terms. We may assign these Terms at any time.</p>
+      <h3>12. Waiver and severability</h3>
+      <p>If we do not enforce any part of these Terms, that is not a waiver of our rights. If any part of these Terms is found to be invalid or unenforceable, it applies to the maximum extent permitted by law and the rest of these Terms continues in full effect.</p>
+      <h3>13. Entire agreement</h3>
+      <p>These Terms, together with our Privacy Policy and any separate agreement for paid services, are the entire agreement between you and us about our websites and services, and replace any earlier agreements, representations or understandings on that subject.</p>
+      <h3>14. Governing law and jurisdiction</h3>
+      <p>These Terms are governed by the laws of Victoria, Australia. You and we submit to the exclusive jurisdiction of the courts of Victoria, Australia, and the courts that can hear appeals from them.</p>
+      <h3>15. Changes to these Terms</h3>
+      <p>We may update these Terms from time to time. The version on this page applies from its "last updated" date. If you keep using our websites or services after a change, you accept the updated Terms.</p>
+      <h3>16. Contact us</h3>
+      <p>If you have any questions or concerns about these Terms, please contact us at <a href="mailto:michael@vcmo.com.au">michael@vcmo.com.au</a>.</p>
+    </section>
+    <section id="legal-privacy" role="tabpanel" aria-labelledby="tab-privacy" hidden>
+      <p class="updated">Last updated: 25 November 2026</p>
+      <p>This Privacy Policy explains how VCMO (Laps Ventures Pty Ltd as trustee for the Laps Ventures Trust, ABN 13 464 430 237) ("VCMO", "we", "us" or "our") collects, uses, stores and discloses your personal information when you visit our websites, including vcmo.com.au and michaelfrommarketing.com.au, register for our webinars or events, or otherwise deal with us.</p>
+      <p>We handle personal information in line with the Privacy Act 1988 (Cth) and the Australian Privacy Principles. By using our websites or giving us your information, you agree to it being handled as described in this policy.</p>
+      <h3>1. Information we collect</h3>
+      <h4>Information you give us</h4>
+      <p>We may collect:</p>
+      <ul><li>your name, email address and phone number</li><li>your business details, such as your business name, role, state, who runs your advertising and your monthly ad spend</li><li>anything you include when you register for a webinar or event, subscribe to our updates, fill in a form, or contact us by email or phone</li><li>the content of emails you send us, together with our replies</li><li>billing details if you buy a paid product or service from us</li></ul>
+      <p>If you buy something from us, your card details are processed by our payment provider. We do not store full card numbers.</p>
+      <h4>Information collected automatically</h4>
+      <p>When you use our websites, we and our service providers automatically collect information such as:</p>
+      <ul><li>your IP address, browser type and device information</li><li>the pages you view, the time you spend on them, and the sites you visited just before and after ours</li><li>the date and time of your visit</li><li>the advertising campaign or link that brought you to our site (for example UTM tags and ad click identifiers)</li></ul>
+      <p>We collect this through cookies, pixels, web server logs and similar technologies (see section 5).</p>
+      <h4>Information from third parties</h4>
+      <p>When you interact with social media features or third-party tools on our websites, those third parties may also collect information about you under their own privacy policies.</p>
+      <h3>2. How we use your information</h3>
+      <p>We use your personal information to:</p>
+      <ul><li>register you for webinars and events, and send you joining details, reminders and recordings</li><li>respond to your enquiries and provide the products and services you ask for</li><li>process payments</li><li>tailor the content of our sessions and services to your business</li><li>measure how our advertising performs and show relevant ads to you and people like you</li><li>analyse how our websites are used so we can improve them</li><li>send you newsletters, updates and offers we think you will find valuable, where you have agreed to receive them</li><li>meet our legal obligations and protect our rights</li></ul>
+      <h3>3. Advertising and analytics</h3>
+      <p>We use the Meta Pixel and Meta's Conversions API to measure the results of our advertising on Facebook and Instagram. When you visit our websites or register for a webinar, information about that action is sent to Meta. This can include your browser and device details, the page you visited, and identifiers from Meta's cookies. When you register, we may also send Meta your email address, phone number, name and state in hashed (encrypted) form so Meta can match the registration to an ad.</p>
+      <p>Meta handles this information under its own Data Policy. You can control the ads you see in your Facebook and Instagram ad settings.</p>
+      <h3>4. Sharing your information</h3>
+      <p>We do not sell, rent, lend or lease your personal information.</p>
+      <p>We share it only:</p>
+      <ul><li>with service providers who help us run our business, such as our CRM and email platform, webinar platform, payment provider, website host, and analytics and advertising providers, and only as needed for them to provide their services to us</li><li>in aggregate form that does not identify you</li><li>when we believe in good faith that the law requires it, or to protect our legal rights, our users or the public, including to identify or take action against someone who may be breaching our Terms and Conditions</li><li>if our business, or a substantial part of its assets, is sold or transferred, in which case your information may be one of the transferred assets</li></ul>
+      <h3>5. Cookies and tracking technologies</h3>
+      <p>A cookie is a small text file that a website stores in your browser. Cookies help us tell visitors apart, remember your preferences, understand which parts of our site are popular, and measure our advertising. A cookie cannot read other data from your device or pass on viruses.</p>
+      <p>Most browsers accept cookies by default. You can change your browser settings to refuse cookies, but some parts of our websites may not work as well if you do.</p>
+      <h3>6. Overseas storage and transfer</h3>
+      <p>Some of our service providers store or process information outside Australia, including in the United States. Privacy laws in those countries may differ from Australian law. We take reasonable steps to make sure overseas providers protect your information.</p>
+      <h3>7. Security and retention</h3>
+      <p>We use appropriate physical, electronic and organisational measures to protect your information from misuse, loss and unauthorised access. We keep personal information only for as long as we need it for the purposes in this policy, or as required by law.</p>
+      <h3>8. Marketing and opting out</h3>
+      <p>Every marketing email we send includes a link to unsubscribe. Once you unsubscribe, we will stop sending those messages as soon as we reasonably can. You can also contact us at any time to opt out.</p>
+      <h3>9. Surveys and competitions</h3>
+      <p>From time to time we may invite you to take part in surveys or competitions. Taking part is voluntary. We use contact details to notify winners and award prizes, and survey answers to improve our services.</p>
+      <h3>10. Children</h3>
+      <p>Our services are for adults. We ask that people under 18 do not give us personal information without the permission and guidance of a parent or guardian.</p>
+      <h3>11. Other websites</h3>
+      <p>Our websites may link to other sites. We are not responsible for their content or privacy practices. Once you leave our website, this policy no longer applies, so please read the policies of any site you visit.</p>
+      <h3>12. Accessing, correcting or deleting your information</h3>
+      <p>You can ask to access, correct or delete the personal information we hold about you by contacting us using the details below. We will respond within a reasonable time.</p>
+      <h3>13. Complaints</h3>
+      <p>If you have a concern about how we have handled your personal information, please contact us first so we can try to resolve it. If you are not satisfied with our response, you can complain to the Office of the Australian Information Commissioner at oaic.gov.au.</p>
+      <h3>14. Changes to this policy</h3>
+      <p>We may update this policy from time to time. We will post any changes on this page with a new "last updated" date, and where you have agreed to receive emails from us, we may also let you know by email. We will not use information you have already given us in a way that is materially inconsistent with this policy without your consent.</p>
+      <h3>15. Contact us</h3>
+      <p>If you have any questions or concerns about this policy, please contact us at <a href="mailto:michael@vcmo.com.au">michael@vcmo.com.au</a>.</p>
+    </section>
+  </div>
+</dialog>
 
 
 <script>
@@ -538,6 +664,22 @@ fbq('track', 'PageView');
   btn.addEventListener("click",function(){ setOpen(!nav.classList.contains("is-open")); });
   nav.addEventListener("click",function(e){ if(e.target.closest("a")) setOpen(false); });
   document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&nav.classList.contains("is-open")){ setOpen(false); btn.focus(); } });
+})();
+</script>
+<script>
+(function(){
+  var dlg=document.getElementById("legal"); if(!dlg) return;
+  var tabs=dlg.querySelectorAll('[role="tab"]');
+  function show(which){
+    tabs.forEach(function(t){ var on=t.id==="tab-"+which; t.setAttribute("aria-selected",on?"true":"false"); document.getElementById(t.getAttribute("aria-controls")).hidden=!on; });
+    dlg.querySelector(".legal-body").scrollTop=0;
+  }
+  document.querySelectorAll("[data-legal]").forEach(function(a){
+    a.addEventListener("click",function(e){ e.preventDefault(); show(a.getAttribute("data-legal")); if(dlg.showModal){ dlg.showModal(); } else { dlg.setAttribute("open",""); } });
+  });
+  tabs.forEach(function(t){ t.addEventListener("click",function(){ show(t.id.replace("tab-","")); }); });
+  dlg.querySelector(".legal-close").addEventListener("click",function(){ dlg.close ? dlg.close() : dlg.removeAttribute("open"); });
+  dlg.addEventListener("click",function(e){ if(e.target===dlg) dlg.close(); });
 })();
 </script>
 <script src="js/calculator.js"></script>
