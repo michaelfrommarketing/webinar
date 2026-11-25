@@ -1,5 +1,7 @@
 /**
- * Bad lead cost calculator. Recalculates on every input change; nothing is sent anywhere.
+ * Bad lead cost calculator. Recalculates on every input change.
+ * The only thing sent anywhere is one Meta Pixel event (CalculatorComplete, with the yearly total)
+ * once someone has filled in every main field. The numbers they type are never sent.
  */
 (function () {
   var form = document.getElementById("calc-form");
@@ -59,6 +61,27 @@
   // The embedded version on index.html leaves some of these out.
   function hide(id, hidden) { var el = $(id); if (el) el.hidden = hidden; }
 
+  // Meta Pixel: fire CalculatorComplete once per visit, when every main field has a value
+  // and the person has stopped typing for two seconds (so a half-typed salary isn't sent).
+  var MAIN_FIELDS = ["ad-spend", "agency", "leads", "good", "call-mins", "salary"];
+  var tracked = false, trackTimer = null;
+  function trackComplete(yearly) {
+    if (tracked) return;
+    clearTimeout(trackTimer);
+    var filled = MAIN_FIELDS.every(function (id) { return $(id) && $(id).value.trim() !== ""; });
+    if (!filled || !(yearly > 0)) return;
+    trackTimer = setTimeout(function () {
+      if (tracked || !window.fbq) return;
+      tracked = true;
+      window.fbq("trackCustom", "CalculatorComplete", {
+        value: Math.round(yearly),
+        currency: "AUD",
+        content_name: "Bad lead calculator",
+        page: location.pathname === "/" ? "home" : "calculator"
+      });
+    }, 2000);
+  }
+
   function calculate() {
     var adSpend = num("ad-spend");
     var agency = num("agency");
@@ -89,6 +112,8 @@
     var started = monthly > 0;
     hide("r-month-line", !started);
     hide("r-empty", started);
+
+    trackComplete(yearly);
 
     set("r-year", money.format(yearly));
     set("r-month", money.format(monthly));
