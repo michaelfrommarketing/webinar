@@ -1,7 +1,8 @@
 /**
  * Bad lead cost calculator. Recalculates on every input change.
- * The only thing sent anywhere is one Meta Pixel event (CalculatorComplete, with the yearly total)
- * once someone has filled in every main field. The numbers they type are never sent.
+ * The only things sent anywhere are two Meta Pixel events: CalculatorStart the first time someone
+ * types in it, and CalculatorComplete (with the yearly total) once they have filled in every main
+ * field. The numbers they type are never sent.
  */
 (function () {
   var form = document.getElementById("calc-form");
@@ -64,7 +65,15 @@
   // Meta Pixel: fire CalculatorComplete once per visit, when every main field has a value
   // and the person has stopped typing for two seconds (so a half-typed salary isn't sent).
   var MAIN_FIELDS = ["ad-spend", "agency", "leads", "good", "call-mins", "salary"];
-  var tracked = false, trackTimer = null;
+  var tracked = false, trackTimer = null, started = false;
+  function trackStart() {
+    if (started || !window.fbq) return;
+    started = true;
+    window.fbq("trackCustom", "CalculatorStart", {
+      content_name: "Bad lead calculator",
+      page: location.pathname === "/" ? "home" : "calculator"
+    });
+  }
   function trackComplete(yearly) {
     if (tracked) return;
     clearTimeout(trackTimer);
@@ -155,6 +164,7 @@
 
   form.addEventListener("input", function (e) {
     if (e.target && e.target.tagName === "INPUT") formatField(e.target, e);
+    trackStart();
     calculate();
   });
   form.addEventListener("submit", function (e) { e.preventDefault(); });

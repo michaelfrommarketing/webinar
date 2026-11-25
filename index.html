@@ -93,7 +93,7 @@ a { color: inherit; }
 /* Hero */
 .hero { background: radial-gradient(500px 448px at 80% 55%, rgba(216,80,247,0.3) 0%, rgba(122,50,139,0.15) 50%, rgba(28,19,31,0) 100%), var(--hot-black); color: var(--paper); }
 .hero .wrap { padding-top: 90px; padding-bottom: 84px; position: relative; }
-.hero-photo { position: absolute; right: var(--pad-x); bottom: 0; width: clamp(300px, 27.5vw, 396px); height: auto; aspect-ratio: 396 / 648; object-fit: contain; object-position: bottom; pointer-events: none; }
+.hero-photo { position: absolute; right: var(--pad-x); bottom: 0; width: clamp(300px, 27.5vw, 396px); height: auto; aspect-ratio: 396 / 648; object-fit: contain; object-position: bottom; pointer-events: none; transform: scaleX(-1); }
 @media (min-width: 1181px) { .hero .wrap { min-height: 672px; } }
 @media (max-width: 1180px) { .hero-photo { display: none; } }
 .hero-copy { width: 100%; max-width: 800px; display: flex; flex-direction: column; align-items: flex-start; gap: 32px; padding-bottom: 48px; }
@@ -329,6 +329,7 @@ fbq('track', 'PageView');
         </ul>
       </div>
     </div>
+    <!-- Video hidden until it is ready. Remove these comment markers to bring it back.
     <div class="video">
       <h3 class="h3">Why your ads attract the wrong leads</h3>
       <div class="video-frame">
@@ -336,6 +337,7 @@ fbq('track', 'PageView');
         <p class="body">Video coming soon</p>
       </div>
     </div>
+    -->
   </div>
 </section>
 
